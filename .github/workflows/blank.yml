@@ -29,13 +29,30 @@ jobs:
       - name: Run a one-line script
         run: |
          sudo apt-get update
-         sudo apt-get install -y  gcovr libmagic-dev libjpeg-dev libpng-dev libboost-filesystem-dev libboost-regex-dev cimg-dev
+         sudo apt-get install -y  gcovr libmagic-dev libjpeg-dev libpng-dev libboost-filesystem-dev \
+         libboost-regex-dev cimg-dev clang-12 libgl-dev libvulkan-dev libpulse-dev libx11-dev libxft-dev \
+         libxcursor-dev libxext-dev libxfixes-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev \
+         libfreetype-dev libfreetype6 libfreetype6-dev
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-         wget https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20220822-1/linuxdeploy-x86_64.AppImage \
+         wget -q https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20220822-1/linuxdeploy-x86_64.AppImage \
          https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
          chmod 755 linuxdeploy-x86_64.AppImage appimagetool-x86_64.AppImage
-         ./linuxdeploy-x86_64.AppImage
-         ./appimagetool-x86_64.AppImage
+
+      - name: Run a multi-line script
+        run: |
+         git clone -b develop https://github.com/BodbDearg/PsyDoom
+         cd PsyDoom
+         cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang-12 -DCMAKE_CXX_COMPILER=clang++-12
+         export MAKEFLAGS=--keep-going
+         cmake --build build --config Release
+         ls -R
+         #export APP_IMAGE_TOOL_PATH=$GITHUB_WORKSPACE
+         #export LINUX_DEPLOY_PATH=$GITHUB_WORKSPACE
+         #export PSYDOOM_ROOT_PATH=$GITHUB_WORKSPACE/PsyDoom
+         #export PSYDOOM_BINARY_PATH=
+         
+         
+         
