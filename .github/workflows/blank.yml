@@ -51,7 +51,7 @@ jobs:
          export APP_IMAGE_TOOL_PATH=$GITHUB_WORKSPACE
          export LINUX_DEPLOY_PATH=$GITHUB_WORKSPACE
          export PSYDOOM_ROOT_PATH=$GITHUB_WORKSPACE/PsyDoom
-         export PSYDOOM_BINARY_PATH=$PSYDOOM_ROOT_PATH/game/PsyDoom
+         export PSYDOOM_BINARY_PATH=$PSYDOOM_ROOT_PATH/build/game/PsyDoom
          ./tools/linux/make-psydoom-linux-appimage.sh
          ls -R
          
