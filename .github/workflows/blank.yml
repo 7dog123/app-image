@@ -48,11 +48,12 @@ jobs:
          cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang-12 -DCMAKE_CXX_COMPILER=clang++-12
          export MAKEFLAGS=--keep-going
          cmake --build build --config Release
+         export APP_IMAGE_TOOL_PATH=$GITHUB_WORKSPACE
+         export LINUX_DEPLOY_PATH=$GITHUB_WORKSPACE
+         export PSYDOOM_ROOT_PATH=$GITHUB_WORKSPACE/PsyDoom
+         export PSYDOOM_BINARY_PATH=$PSYDOOM_ROOT_PATH/game/PsyDoom
+         ./tools/linux/make-psydoom-linux-appimage.sh
          ls -R
-         #export APP_IMAGE_TOOL_PATH=$GITHUB_WORKSPACE
-         #export LINUX_DEPLOY_PATH=$GITHUB_WORKSPACE
-         #export PSYDOOM_ROOT_PATH=$GITHUB_WORKSPACE/PsyDoom
-         #export PSYDOOM_BINARY_PATH=
          
          
          
