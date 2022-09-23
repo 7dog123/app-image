@@ -52,7 +52,7 @@ jobs:
          APP_IMAGE_TOOL_PATH=$GITHUB_WORKSPACE \
          LINUX_DEPLOY_PATH=$GITHUB_WORKSPACE \
          PSYDOOM_ROOT_PATH=$GITHUB_WORKSPACE/PsyDoom \
-         PSYDOOM_BINARY_PATH=$PSYDOOM_ROOT_PATH/build/game/PsyDoom
+         PSYDOOM_BINARY_PATH=$GITHUB_WORKSPACE/PsyDoom/build/game/PsyDoom
          ls -R
          
          
